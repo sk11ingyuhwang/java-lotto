@@ -23,12 +23,14 @@ public class Controller {
 
         Lottos lottoBundle = LottoBundle.lottoBundle(count, new ShuffleLottoNumber());
         UserResult.printCountMessage(lottoBundle);
+
         Lotto winningLottoNumber = new Lotto(UserConsole.inputWinningLottoNumber());
         LottoNumber bonusLottoNumber = UserConsole.inputBonusLottoNumber();
 
         Winning winning = new Winning(winningLottoNumber, bonusLottoNumber);
-        UserResult.printRank(new RankResult(lottoBundle, winning));
+        RankResult rankResult = new RankResult(lottoBundle, winning);
 
-        UserResult.printPrizeRatio(money.getPrizeRatio(new RankResult(lottoBundle, winning).getTotalPrize(), money));
+        UserResult.printRank(rankResult);
+        UserResult.printPrizeRatio(money.getPrizeRatio(rankResult.getTotalPrize(), money));
     }
 }
