@@ -2,7 +2,6 @@ package lotto.view;
 
 import java.util.Scanner;
 import lotto.domain.LottoNumber;
-import lotto.domain.Money;
 
 public class UserConsole {
 
@@ -26,7 +25,7 @@ public class UserConsole {
         return SCANNER.nextLine();
     }
 
-    public static LottoNumber inputBbonusLottoNumber() {
+    public static LottoNumber inputBonusLottoNumber() {
         System.out.println(THIRD_MESSAGE);
         int bonusLottoNumber = Integer.parseInt(SCANNER.nextLine());
         return new LottoNumber(bonusLottoNumber);
