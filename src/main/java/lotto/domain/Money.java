@@ -45,5 +45,8 @@ public class Money {
         }
     }
 
+    public double getPrizeRatio(Money totalPrize, Money money) {
+        return totalPrize.getValue() / (double) money.getValue();
+    }
 }
 

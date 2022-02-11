@@ -28,6 +28,7 @@ public class Controller {
 
         Winning winning = new Winning(winningLottoNumber, bonusLottoNumber);
         UserResult.printRank(new RankResult(lottoBundle, winning));
-        UserResult.printPrizeRatio(new RankResult(lottoBundle, winning).getTotalPrize(), money);
+
+        UserResult.printPrizeRatio(money.getPrizeRatio(new RankResult(lottoBundle, winning).getTotalPrize(), money));
     }
 }
