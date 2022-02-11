@@ -10,10 +10,11 @@ public class Money {
     private final int value;
 
     public Money(final String value) {
-        validateTypeLessThousand(value);
-        validateTypeNegativeNumber(value);
-        validateTypeInput(value);
-        this.value = Integer.parseInt(value);
+
+        int tempValue = validateTypeInput(value);
+        validateTypeLessThousand(tempValue);
+        validateTypeNegativeNumber(tempValue);
+        this.value = tempValue;
     }
 
     public Money(final int value) {
@@ -24,15 +25,15 @@ public class Money {
         return value;
     }
 
-    private void validateTypeLessThousand(String value) {
+    private void validateTypeLessThousand(int value) {
         System.out.println(value);
-        if (Integer.parseInt(value) < NUMBER_THOUSAND) {
+        if (value < NUMBER_THOUSAND) {
             throw new IllegalArgumentException(LESS_THOUSAND_ERROR_MESSAGE);
         }
     }
 
-    private void validateTypeNegativeNumber(String value) {
-        if (Integer.parseInt(value) < NUMBER_ZERO) {
+    private void validateTypeNegativeNumber(int value) {
+        if (value < NUMBER_ZERO) {
             throw new IllegalArgumentException(NEGATIVE_NUMBER_ERROR_MESSAGE);
         }
     }
