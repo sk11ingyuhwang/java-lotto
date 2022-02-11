@@ -38,13 +38,10 @@ public class UserResult {
 
     }
 
-//    뷰가 rank를 알아야하는 것 같아요.
-//    MVC 패턴에 맞도록 뷰와 도메인의 관계를 끊어주는건 어떨까요?
-
     public static void printResult(RankResult rankResult, Rank rank) {
-        if (printSecond(rankResult, rank)) {
-//            System.out.printf(SECOND_RESULT_MESSAGE, rank.getMatchCount(),
-//                rank.getPrize().getValue(), rankResult.getRankResult().get(rank));
+        if (rank.isSencod(rank)) {
+            System.out.printf(SECOND_RESULT_MESSAGE, rank.getMatchCount(),
+                rank.getPrize().getValue(), rankResult.getRankResult().get(rank));
             return;
         }
         System.out.printf(RESULT_MESSAGE, rank.getMatchCount(), rank.getPrize().getValue(),
@@ -54,15 +51,4 @@ public class UserResult {
     public static void printPrizeRatio(Money totalPrize, Money money) {
         System.out.printf(TOTAL_RATIO_MESSAGE, totalPrize.getValue() / (float) money.getValue());
     }
-
-    private static boolean printSecond(RankResult rankResult, Rank rank) {
-        if (rank == Rank.SECOND) {
-            System.out.printf(SECOND_RESULT_MESSAGE, rank.getMatchCount(),
-                rank.getPrize().getValue(), rankResult.getRankResult().get(rank));
-            return true;
-        }
-        return false;
-    }
-
-
 }
