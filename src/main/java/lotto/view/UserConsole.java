@@ -28,7 +28,7 @@ public class UserConsole {
 
     public static LottoNumber inputBbonusLottoNumber() {
         System.out.println(THIRD_MESSAGE);
-        int bonusLottoNumber = Integer.valueOf(SCANNER.nextLine());
+        int bonusLottoNumber = Integer.parseInt(SCANNER.nextLine());
         return new LottoNumber(bonusLottoNumber);
     }
 }
