@@ -17,20 +17,29 @@ public class Controller {
 
     public static void run() {
         Money money = new Money(UserConsole.inputString());
-
-        LottoCalculation lottoCalculation = new LottoCalculation(money);
-        int count = lottoCalculation.lottoCalculation();
-
-        Lottos lottoBundle = LottoBundle.lottoBundle(count, new ShuffleLottoNumber());
-        UserResult.printCountMessage(lottoBundle);
-
+        int count = calculateLottoCount(money);
+        Lottos lottoBundle = generateLottoNumber(count);
         Lotto winningLottoNumber = new Lotto(UserConsole.inputWinningLottoNumber());
         LottoNumber bonusLottoNumber = UserConsole.inputBonusLottoNumber();
-
         Winning winning = new Winning(winningLottoNumber, bonusLottoNumber);
         RankResult rankResult = new RankResult(lottoBundle, winning);
+        showLottoResult(money, rankResult);
+    }
 
+    private static void showLottoResult(Money money, RankResult rankResult) {
         UserResult.printRank(rankResult);
         UserResult.printPrizeRatio(money.getPrizeRatio(rankResult.getTotalPrize(), money));
+    }
+
+    private static Lottos generateLottoNumber(int count) {
+        Lottos lottoBundle = LottoBundle.lottoBundle(count, new ShuffleLottoNumber());
+        UserResult.printCountMessage(lottoBundle);
+        return lottoBundle;
+    }
+
+    private static int calculateLottoCount(Money money) {
+        LottoCalculation lottoCalculation = new LottoCalculation(money);
+        int count = lottoCalculation.lottoCalculation();
+        return count;
     }
 }
