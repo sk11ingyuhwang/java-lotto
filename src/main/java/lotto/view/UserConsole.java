@@ -16,9 +16,9 @@ public class UserConsole {
 
     }
 
-    public static Money inputString() {
+    public static String inputString() {
         System.out.println(FIRST_MESSAGE);
-        return new Money(SCANNER.nextLine());
+        return SCANNER.nextLine();
     }
 
     public static String inputWinningLottoNumber() {
